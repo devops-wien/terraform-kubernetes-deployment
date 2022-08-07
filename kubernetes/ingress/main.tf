@@ -1,11 +1,11 @@
 resource "kubernetes_ingress_v1" "generic-ingress" {
   metadata {
-    name   = local.name
+    name   = var.dns_name
     labels = {
-      app = local.name
+      app = var.dns_name
     }
     annotations = {
-      "cert-manager.io/cluster-issuer" : "letsencrypt-prod" // unsued on cf
+      "cert-manager.io/cluster-issuer": "letsencrypt-prod"
       "kubernetes.io/ingress.class" : "default"
       "haproxy.org/check" : "false" // todo: use http-check
       "haproxy.org/check-http" : "/health.txt"
