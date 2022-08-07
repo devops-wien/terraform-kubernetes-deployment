@@ -2,6 +2,6 @@ variable "name" {
   type = string
 }
 
-variable "dns_names" {
-  type = list(string)
+variable "dns_name" {
+  type = string
 }

@@ -1,12 +1,11 @@
 resource "kubernetes_ingress_v1" "generic-ingress" {
-  for_each = toset(var.dns_names)
   metadata {
-    name   = "${var.name}-${replace(each.key, "_","-")}"
+    name   = local.name
     labels = {
-      app = "${var.name}-${replace(each.key, "_","-")}"
+      app = local.name
     }
     annotations = {
-      "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+      "cert-manager.io/cluster-issuer" : "letsencrypt-prod" // unsued on cf
       "kubernetes.io/ingress.class" : "default"
       "haproxy.org/check" : "false" // todo: use http-check
       "haproxy.org/check-http" : "/health.txt"
@@ -15,7 +14,7 @@ resource "kubernetes_ingress_v1" "generic-ingress" {
   }
   spec {
     rule {
-      host = each.value
+      host = var.dns_name
       http {
         path {
           path = "/"
@@ -32,8 +31,8 @@ resource "kubernetes_ingress_v1" "generic-ingress" {
     }
 
     tls {
-      hosts       = [each.value]
-      secret_name = each.value
+      hosts       = [var.dns_name]
+      secret_name = var.dns_name
     }
   }
 }
