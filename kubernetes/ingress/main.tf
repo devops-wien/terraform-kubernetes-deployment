@@ -1,9 +1,9 @@
 resource "kubernetes_ingress_v1" "generic-ingress" {
   for_each = toset(var.dns_names)
   metadata {
-    name   = "${var.name}-${each.value}"
+    name   = "${var.name}-${replace(each.key, "_","-")}"
     labels = {
-      app = "${var.name}-${each.value}"
+      app = "${var.name}-${replace(each.key, "_","-")}"
     }
     annotations = {
       "cert-manager.io/cluster-issuer": "letsencrypt-prod"
