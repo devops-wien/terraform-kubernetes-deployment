@@ -3,9 +3,9 @@ variable "name" {
   default = "deployment"
 }
 
-variable "dns_name" {
-  type    = string
-  default = "example.com"
+variable "dns_names" {
+  type    = list(string)
+  default = ["example.com"]
 }
 
 variable "target_port" {

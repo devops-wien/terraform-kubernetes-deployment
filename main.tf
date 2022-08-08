@@ -14,7 +14,7 @@ module "kubernetes-service" {
 }
 
 module "kubernetes-ingress" {
-  source   = "./kubernetes/ingress"
-  dns_name = var.dns_name
-  name     = var.name
+  source    = "./kubernetes/ingress"
+  dns_names = var.dns_names
+  name      = var.name
 }

@@ -1,8 +1,9 @@
 resource "kubernetes_ingress_v1" "generic-ingress" {
+  for_each = toset(var.dns_names)
   metadata {
-    name   = var.dns_name
+    name   = each.key
     labels = {
-      app = var.dns_name
+      app = each.key
     }
     annotations = {
       "cert-manager.io/cluster-issuer": "letsencrypt-prod"
@@ -14,7 +15,7 @@ resource "kubernetes_ingress_v1" "generic-ingress" {
   }
   spec {
     rule {
-      host = var.dns_name
+      host = each.key
       http {
         path {
           path = "/"
@@ -31,8 +32,8 @@ resource "kubernetes_ingress_v1" "generic-ingress" {
     }
 
     tls {
-      hosts       = [var.dns_name]
-      secret_name = var.dns_name
+      hosts       = [each.key]
+      secret_name = each.key
     }
   }
 }
