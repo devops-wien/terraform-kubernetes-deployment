@@ -45,3 +45,9 @@ variable "cluster_ca_certificate" {
   description = "(Required) PEM-encoded root certificates bundle for TLS authentication. Can be sourced from KUBE_CLUSTER_CA_CERT_DATA."
   type        = string
 }
+
+variable "zone" {
+  description = "Zone"
+  type        = string
+  default     = "at-vie-1"
+}

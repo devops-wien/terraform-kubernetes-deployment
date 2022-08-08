@@ -13,3 +13,8 @@ variable "requests_cpu" {
 variable "requests_memory" {
   type = string
 }
+
+variable "zone" {
+  description = "Zone"
+  type        = string
+}

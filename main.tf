@@ -4,6 +4,7 @@ module "kubernetes-deployment-v1" {
   name            = var.name
   requests_cpu    = var.requests_cpu
   requests_memory = var.requests_memory
+  zone            = var.zone
 }
 
 module "kubernetes-service" {
