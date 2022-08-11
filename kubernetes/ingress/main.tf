@@ -11,6 +11,8 @@ resource "kubernetes_ingress_v1" "generic-ingress" {
       "haproxy.org/check" : "false" // todo: use http-check
       "haproxy.org/check-http" : "/health.txt"
       "haproxy.org/check-interval" : "10s"
+      "haproxy.org/cors-enable": "true"
+      "haproxy.org/cors-allow-credentials": "true"
     }
   }
   spec {
