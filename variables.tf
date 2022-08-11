@@ -19,7 +19,7 @@ variable "image" {
 }
 
 variable "requests_cpu" {
-  default = "300m"
+  default = "250m"
 }
 variable "requests_memory" {
   default = "64Mi"
