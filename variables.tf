@@ -51,3 +51,9 @@ variable "zone" {
   type        = string
   default     = "at-vie-1"
 }
+
+variable "env_name" {
+  description = "Environment (Prod or Dev)"
+  type = string
+  default = "dev"
+}

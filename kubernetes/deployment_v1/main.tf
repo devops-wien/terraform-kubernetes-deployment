@@ -31,6 +31,10 @@ resource "kubernetes_deployment_v1" "kubernetes_deployment_v1" {
             name = "ZONE"
             value = var.zone
           }
+          env {
+            name = "ENV_NAME"
+            value = var.env_name
+          }
           resources {
             requests = {
               cpu    = var.requests_cpu

@@ -18,3 +18,9 @@ variable "zone" {
   description = "Zone"
   type        = string
 }
+
+variable "env_name" {
+  description = "Environment (Prod or Dev)"
+  type = string
+  default = "dev"
+}
