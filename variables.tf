@@ -57,3 +57,9 @@ variable "env_name" {
   type = string
   default = "dev"
 }
+
+variable "deployment_strategy" {
+  description = "(Optional) The deployment strategy to use to replace existing pods with new ones. Can be 'Recreate' or 'RollingUpdate'. Default is RollingUpdate."
+  type = string
+  default = "RollingUpdate"
+}

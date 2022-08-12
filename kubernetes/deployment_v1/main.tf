@@ -14,6 +14,10 @@ resource "kubernetes_deployment_v1" "kubernetes_deployment_v1" {
       }
     }
 
+    strategy {
+      type = var.deployment_strategy
+    }
+
     template {
       metadata {
         labels = {
@@ -42,6 +46,7 @@ resource "kubernetes_deployment_v1" "kubernetes_deployment_v1" {
             }
           }
         }
+
       }
     }
   }

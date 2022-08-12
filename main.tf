@@ -1,11 +1,12 @@
 module "kubernetes-deployment-v1" {
-  source          = "./kubernetes/deployment_v1"
-  image           = var.image
-  name            = var.name
-  requests_cpu    = var.requests_cpu
-  requests_memory = var.requests_memory
-  zone            = var.zone
-  env_name        = var.env_name
+  source              = "./kubernetes/deployment_v1"
+  image               = var.image
+  name                = var.name
+  requests_cpu        = var.requests_cpu
+  requests_memory     = var.requests_memory
+  zone                = var.zone
+  env_name            = var.env_name
+  deployment_strategy = var.deployment_strategy
 }
 
 module "kubernetes-service" {
